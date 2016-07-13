@@ -1,4 +1,4 @@
-import {rewrite} from './const-rewrite.bundle.js'
+import { rule } from '@buggyorg/nitro/lib/rewrite/rewrite' // TODO this will change in later versions
 import * as matchers from './matchers'
 import {utils} from '@buggyorg/graphtools'
 import _ from 'lodash'
@@ -41,17 +41,17 @@ function allInputsOfTypes (ports, types) {
   return true
 }
 
-export const rewriteAddition = rewrite.rule(
+export const rewriteAddition = rule(
   matchers.selectAddition,
   resolveAddition
 )
 
-export const rewriteFloor = rewrite.rule(
+export const rewriteFloor = rule(
   matchers.selectFloor,
   resolveFloor
 )
 
-export const rewriteMultiply = rewrite.rule(
+export const rewriteMultiply = rule(
   _.partial(matchers.selectID, _, _, 'math/multiply'),
   resolveMultiply
 )
